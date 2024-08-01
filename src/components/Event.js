@@ -12,18 +12,18 @@ const Event = ({ event }) => {
     <li>
       <p>{summary}</p>
 			<p>{location}</p>
-      {/* Render start and end times only if showDetails is true */}
-				{showDetails && (
-					<>
+			{/* Render start and end times only if showDetails is true */}
+			{showDetails && (
+				<>
 						<p>{startDateTime}</p>
 						<p>{endDateTime}</p>
-					</>
+				</>
 			)}
-      <button onClick={() => setShowDetails(!showDetails)}>
-        {showDetails ? 'Hide details' : 'Show details'}
-      </button>
-    </li>
-  );
+			<button onClick={() => setShowDetails(!showDetails)}>
+				{showDetails ? 'Hide details' : 'Show details'}
+				</button>
+		</li>
+	);
 };
 
 export default Event;
