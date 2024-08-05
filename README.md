@@ -18,6 +18,14 @@ Scenario 2:
     When the user starts typing a city name in the search field
     Then the user should see a list of suggested cities matching the input
 
+Scenario 3:
+
+    Given user was typing “Berlin” in the city textbox
+    And the list of suggested cities is showing;
+    When the user selects a city (e.g., “Berlin, Germany”) from the list;
+    Then their city should be changed to that city (i.e., “Berlin, Germany”)
+    And the user should receive a list of upcoming events in that city.
+
 # Feature 2: Show / Hide Event Details:
 
 As a user, I should be able to click on show/hide button So that I can view or hide event details
