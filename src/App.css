@@ -25,12 +25,30 @@
 }
 
 .city:hover {
-  border: 1px solid rgba(0, 0, 0, 0.4);
+  border: 1px solid #00000066;
 }
 
 .suggestions {
   display: inline;
   list-style: none;
+}
+
+.suggestion-item {
+  color: #757575;
+  cursor: pointer;
+}
+
+.suggestion-item:hover {
+  color: black;
+}
+
+.see-all-cities {
+  color: #757575;
+  cursor: pointer;
+}
+
+.see-all-cities:hover {
+  color: black;
 }
 
 #number-of-events {
