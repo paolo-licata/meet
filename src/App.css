@@ -53,11 +53,19 @@
 
 .alerts-container {
   position: fixed;
-  display: inline-block;
   top: 0px;
   left: 20px;
   width: 250px;
   z-index: 1000;
+}
+
+@media (max-width: 900px) {
+  .alerts-container {
+    top: auto;
+    left: auto;
+    bottom: 20px;
+    right: 20px;
+  }
 }
 
 #number-of-events {

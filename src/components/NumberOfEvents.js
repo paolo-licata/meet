@@ -1,11 +1,20 @@
 import React, { useState } from 'react';
 
-function NumberOfEvents({ onChange }) {
+function NumberOfEvents({ setCurrentNOE, setErrorAlert }) {
   const [number, setNumber] = useState(32);
 
   const handleChange = (event) => {
-    setNumber(event.target.value);
-    onChange(event.target.value);
+    let value = event.target.value;
+    let numericValue = Number(value);
+
+    setNumber(value);
+
+    let errorText = "";
+    if(isNaN(numericValue) || numericValue <= 0) {
+      errorText = 'Please enter a number greater than zero.'
+    } 
+    setCurrentNOE(numericValue);
+    setErrorAlert(errorText);
   };
 
   return (

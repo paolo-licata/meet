@@ -28,7 +28,7 @@ defineFeature(feature, (test) => {
     when('the user opens the event list', () => {
       AppDOM = AppComponent.container.firstChild;
       const EventListDOM = AppDOM.querySelector('#event-list');
-      NumberOfEventsComponent = render(<NumberOfEvents onChange={mockOnChange} />, { container: EventListDOM });
+      NumberOfEventsComponent = render(<NumberOfEvents setCurrentNOE={mockOnChange} setErrorAlert={() => {}} />, { container: EventListDOM });
       expect(NumberOfEventsComponent).toBeTruthy();
     });
 
@@ -44,7 +44,7 @@ defineFeature(feature, (test) => {
 
     and(/^the user has specified the number of events to display as "(.*)"$/, async () => {
       const EventListDOM = AppComponent.container.firstChild.querySelector('#event-list');
-      NumberOfEventsComponent = render(<NumberOfEvents onChange={mockOnChange} />, { container: EventListDOM });
+      NumberOfEventsComponent = render(<NumberOfEvents setCurrentNOE={mockOnChange} setErrorAlert={() => {}} />, { container: EventListDOM });
       const user = userEvent.setup();
       const NoE = NumberOfEventsComponent.getByRole('textbox');
       await user.clear(NoE);
