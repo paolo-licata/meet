@@ -1,6 +1,13 @@
 .App {
   text-align: center;
-  align-items: center;
+}
+
+.navigation {
+  font-size: 32px;
+  padding: 6px;
+  margin-bottom: 20px;
+  color: white;
+  background-color: #771010;
 }
 
 #city-search {
@@ -211,5 +218,16 @@
   .details-btn {
     padding: 12px 25px;
     font-size: 1.1em;
+  }
+}
+
+.charts-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+@media (max-width: 768px) {
+  .charts-container {
+    grid-template-columns: 1fr;
   }
 }

@@ -7,6 +7,8 @@ import { InfoAlert, ErrorAlert, WarningAlert } from './components/Alert';
 
 import './App.css';
 import CityEventsChart from './components/CityEventsChart';
+import EventGenresChart from './components/EventGenresChart';
+import NavBar from './components/Navigation';
 
 const App = () => {
   const [allLocations, setAllLocations] = useState([]);
@@ -37,6 +39,7 @@ const App = () => {
 
   return (
     <div className="App">
+      <NavBar />
       <CitySearch allLocations={allLocations} setCurrentCity={setCurrentCity} setInfoAlert={setInfoAlert} />
         <div className="alerts-container">
           {infoAlert.length ? <InfoAlert text={infoAlert}/> : null}
@@ -44,7 +47,10 @@ const App = () => {
           {warningAlert.length ? <WarningAlert text={warningAlert}/> : null}
         </div>
       <NumberOfEvents setCurrentNOE={setCurrentNOE} setErrorAlert={setErrorAlert} />
-      <CityEventsChart allLocations={allLocations} events={events} />
+      <div className="charts-container">
+        <EventGenresChart events={events}/>
+        <CityEventsChart allLocations={allLocations} events={events} />
+      </div>
       <EventList events={events} />
     </div>
   );
