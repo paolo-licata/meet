@@ -7,21 +7,21 @@ class Alert extends Component {
     this.bgColor = null;
   }
 
-	getStyle = () => {
+  getStyle = () => {
     return {
       color: this.color,
       backgroundColor: this.bgColor,
-      borderWidth: "1px",
-      borderStyle: "solid",
-      fontWeight: "bolder",
-      borderRadius: "10px",
+      borderWidth: '1px',
+      borderStyle: 'solid',
+      fontWeight: 'bolder',
+      borderRadius: '10px',
       borderColor: this.color,
-      textAlign: "center",
-      fontSize: "12px",
-      margin: "10px 0",
-      padding: "10px"
+      textAlign: 'center',
+      fontSize: '12px',
+      margin: '10px 0',
+      padding: '10px',
     };
-  }
+  };
 
   render() {
     return (
@@ -41,21 +41,19 @@ class InfoAlert extends Alert {
 }
 
 class ErrorAlert extends Alert {
-	constructor(props) {
-		super(props);
-		this.color = 'rgb(227, 55, 41)';
-		this.bgColor = 'rgb(239, 197, 194)';
-	}
+  constructor(props) {
+    super(props);
+    this.color = 'rgb(227, 55, 41)'; // red
+    this.bgColor = 'rgb(239, 197, 194)'; // light red
+  }
 }
 
 class WarningAlert extends Alert {
-	constructor(props) {
-		super(props);
-		this.color = 'rgb(239, 154, 10)';
-		this.bgColor = 'rgb(255, 225, 140)';
-	}
+  constructor(props) {
+    super(props);
+    this.color = 'rgb(239, 154, 10)'; // orange
+    this.bgColor = 'rgb(255, 225, 140)'; // light orange
+  }
 }
-
-
 
 export { InfoAlert, ErrorAlert, WarningAlert };

@@ -1,61 +1,77 @@
 import { useState, useEffect } from "react";
 
 const CitySearch = ({ allLocations, setCurrentCity, setInfoAlert }) => {
-	const [showSuggestions, setShowSuggestions] = useState(false);
-	const [query, setQuery] = useState("");
-	const [suggestions, setSuggestions] = useState([]);
+  const [showSuggestions, setShowSuggestions] = useState(false);
+  const [query, setQuery] = useState("");
+  const [suggestions, setSuggestions] = useState([]);
 
-	const handleInputChanged = (event) => {
+  const handleInputChanged = (event) => {
     const value = event.target.value;
-    const filteredLocations = allLocations ? allLocations.filter((location) => {
-      return location.toUpperCase().indexOf(value.toUpperCase()) > -1;
-    }) : [];
+    const filteredLocations = allLocations
+      ? allLocations.filter((location) => {
+          return location.toUpperCase().indexOf(value.toUpperCase()) > -1;
+        })
+      : [];
 
     setQuery(value);
     setSuggestions(filteredLocations);
 
-		let infoText;
-		if (filteredLocations.length === 0) {
-			infoText = "We can't find the city you are looking for. Please try a different city."
-		} else {
-			infoText = ""
-		}
-		setInfoAlert(infoText);
+    let infoText;
+    if (filteredLocations.length === 0) {
+      infoText =
+        "We can't find the city you are looking for. Please try a different city.";
+    } else {
+      infoText = "";
+    }
+    setInfoAlert(infoText);
   };
 
-	const handleItemClicked = (event) => {
+  const handleItemClicked = (event) => {
     const value = event.target.textContent;
     setQuery(value);
     setShowSuggestions(false);
-		setCurrentCity(value);
-		setInfoAlert("")
+    setCurrentCity(value);
+    setInfoAlert("");
   };
 
-	useEffect(() => {
+  useEffect(() => {
     setSuggestions(allLocations);
   }, [`${allLocations}`]);
 
-	return (
-		<div id="city-search">
-			<input
-				type="text"
-				className="city"
-					placeholder="Search for a city"
-				value={query}
-				onFocus={() => setShowSuggestions(true)}
-				onChange={handleInputChanged}
-			/>
-			{showSuggestions ? 
-				<ul className="suggestions">
-					{suggestions.map((suggestion) => {
-						return <li className="suggestion-item" onClick={handleItemClicked} key={suggestion}>{suggestion}</li>
-					})}
-					<li className="see-all-cities" key='See all cities' onClick={handleItemClicked}>
-						<b>See all cities</b>
-					</li>
-				</ul> : null}
-		</div>
-	)
-}
- 
- export default CitySearch;
+  return (
+    <div id="city-search">
+      <input
+        type="text"
+        className="city"
+        placeholder="Search for a city"
+        value={query}
+        onFocus={() => setShowSuggestions(true)}
+        onChange={handleInputChanged}
+      />
+      {showSuggestions ? (
+        <ul className="suggestions">
+          {suggestions.map((suggestion) => {
+            return (
+              <li
+                className="suggestion-item"
+                onClick={handleItemClicked}
+                key={suggestion}
+              >
+                {suggestion}
+              </li>
+            );
+          })}
+          <li
+            className="see-all-cities"
+            key="See all cities"
+            onClick={handleItemClicked}
+          >
+            <b>See all cities</b>
+          </li>
+        </ul>
+      ) : null}
+    </div>
+  );
+};
+
+export default CitySearch;
