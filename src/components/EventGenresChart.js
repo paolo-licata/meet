@@ -28,13 +28,18 @@ const EventGenresChart = ({ events }) => {
   }) => {
     const RADIAN = Math.PI / 180;
     const radius = outerRadius;
-    const x = cx + radius * Math.cos(-midAngle * RADIAN) * 1.07;
-    const y = cy + radius * Math.sin(-midAngle * RADIAN) * 1.07;
+    const screenWidth = window.innerWidth;
+    const offsetMultiplier = screenWidth < 430 ? 1.02 : 1.12;
+
+    const x = cx + radius * Math.cos(-midAngle * RADIAN) * offsetMultiplier;
+    const y = cy + radius * Math.sin(-midAngle * RADIAN) * offsetMultiplier;
+
     return percent ? (
       <text
         x={x}
         y={y}
         fill="#a42f15"
+        fontSize={screenWidth < 430 ? '11px' : '14px'}
         textAnchor={x > cx ? 'start' : 'end'}
         dominantBaseline="central"
       >
